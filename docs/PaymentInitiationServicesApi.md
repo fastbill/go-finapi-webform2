@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-    directDebitWithAccountDetails := *openapiclient.NewDirectDebitWithAccountDetails(time.Now(), []openapiclient.DirectDebitOrder{*openapiclient.NewDirectDebitOrder(*openapiclient.NewAmount(float32(0.04), openapiclient.Currency("AED")), *openapiclient.NewPaymentPayer("DE77533700080111111100", "Max Mustermann"), "1", time.Now(), "DE98ZZZ09999999999")}, *openapiclient.NewDirectDebitWithAccountReceiver(int64(42)), "B2B", "OOFF") // DirectDebitWithAccountDetails | 
+    directDebitWithAccountDetails := *openapiclient.NewDirectDebitWithAccountDetails(time.Now(), []openapiclient.DirectDebitOrder{*openapiclient.NewDirectDebitOrder(*openapiclient.NewAmount(float64(0.04), openapiclient.Currency("AED")), *openapiclient.NewPaymentPayer("DE77533700080111111100", "Max Mustermann"), "1", time.Now(), "DE98ZZZ09999999999")}, *openapiclient.NewDirectDebitWithAccountReceiver(int64(42)), "B2B", "OOFF") // DirectDebitWithAccountDetails | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -99,7 +99,7 @@ import (
 )
 
 func main() {
-    paymentWithAccountDetails := *openapiclient.NewPaymentWithAccountDetails(*openapiclient.NewPaymentWithAccountSender(int64(42)), []openapiclient.PaymentOrder{*openapiclient.NewPaymentOrder(*openapiclient.NewAmount(float32(0.04), openapiclient.Currency("AED")), *openapiclient.NewPaymentRecipient("DE77533700080111111100", "Max Mustermann"))}) // PaymentWithAccountDetails | 
+    paymentWithAccountDetails := *openapiclient.NewPaymentWithAccountDetails(*openapiclient.NewPaymentWithAccountSender(int64(42)), []openapiclient.PaymentOrder{*openapiclient.NewPaymentOrder(*openapiclient.NewAmount(float64(0.04), openapiclient.Currency("AED")), *openapiclient.NewPaymentRecipient("DE77533700080111111100", "Max Mustermann"))}) // PaymentWithAccountDetails | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -165,7 +165,7 @@ import (
 )
 
 func main() {
-    standalonePaymentDetails := *openapiclient.NewStandalonePaymentDetails([]openapiclient.PaymentOrder{*openapiclient.NewPaymentOrder(*openapiclient.NewAmount(float32(0.04), openapiclient.Currency("AED")), *openapiclient.NewPaymentRecipient("DE77533700080111111100", "Max Mustermann"))}) // StandalonePaymentDetails | 
+    standalonePaymentDetails := *openapiclient.NewStandalonePaymentDetails([]openapiclient.PaymentOrder{*openapiclient.NewPaymentOrder(*openapiclient.NewAmount(float64(0.04), openapiclient.Currency("AED")), *openapiclient.NewPaymentRecipient("DE77533700080111111100", "Max Mustermann"))}) // StandalonePaymentDetails | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -232,7 +232,7 @@ import (
 )
 
 func main() {
-    standingOrderDetails := *openapiclient.NewStandingOrderDetails(*openapiclient.NewAmount(float32(0.04), openapiclient.Currency("AED")), *openapiclient.NewRecipient("DE77533700080111111100", "Max Mustermann"), time.Now(), "MONTHLY") // StandingOrderDetails | 
+    standingOrderDetails := *openapiclient.NewStandingOrderDetails(*openapiclient.NewAmount(float64(0.04), openapiclient.Currency("AED")), *openapiclient.NewRecipient("DE77533700080111111100", "Max Mustermann"), time.Now(), "MONTHLY") // StandingOrderDetails | 
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -17,7 +17,7 @@ import (
 // Amount Amount details
 type Amount struct {
 	// The amount of the payment. Must be a positive decimal number with at most two decimal places.
-	Value float32 `json:"value"`
+	Value float64 `json:"value"`
 	Currency Currency `json:"currency"`
 }
 
@@ -25,7 +25,7 @@ type Amount struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAmount(value float32, currency Currency) *Amount {
+func NewAmount(value float64, currency Currency) *Amount {
 	this := Amount{}
 	this.Value = value
 	this.Currency = currency
@@ -41,9 +41,9 @@ func NewAmountWithDefaults() *Amount {
 }
 
 // GetValue returns the Value field value
-func (o *Amount) GetValue() float32 {
+func (o *Amount) GetValue() float64 {
 	if o == nil {
-		var ret float32
+		var ret float64
 		return ret
 	}
 
@@ -52,7 +52,7 @@ func (o *Amount) GetValue() float32 {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *Amount) GetValueOk() (*float32, bool) {
+func (o *Amount) GetValueOk() (*float64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -60,7 +60,7 @@ func (o *Amount) GetValueOk() (*float32, bool) {
 }
 
 // SetValue sets field value
-func (o *Amount) SetValue(v float32) {
+func (o *Amount) SetValue(v float64) {
 	o.Value = v
 }
 

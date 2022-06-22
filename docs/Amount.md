@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Value** | **float32** | The amount of the payment. Must be a positive decimal number with at most two decimal places. | 
+**Value** | **float64** | The amount of the payment. Must be a positive decimal number with at most two decimal places. | 
 **Currency** | [**Currency**](Currency.md) |  | 
 
 ## Methods
 
 ### NewAmount
 
-`func NewAmount(value float32, currency Currency, ) *Amount`
+`func NewAmount(value float64, currency Currency, ) *Amount`
 
 NewAmount instantiates a new Amount object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetValue
 
-`func (o *Amount) GetValue() float32`
+`func (o *Amount) GetValue() float64`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *Amount) GetValueOk() (*float32, bool)`
+`func (o *Amount) GetValueOk() (*float64, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *Amount) SetValue(v float32)`
+`func (o *Amount) SetValue(v float64)`
 
 SetValue sets Value field to given value.
 
