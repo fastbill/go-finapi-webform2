@@ -34,6 +34,7 @@ import (
 	"unicode/utf8"
 
 	"golang.org/x/oauth2"
+	"github.com/fastbill/go-finapi/v6"
 )
 
 var (
@@ -344,7 +345,7 @@ func (c *APIClient) prepareRequest(
 		// Walk through any authentication.
 
 		// OAuth2 authentication
-		if tok, ok := ctx.Value(ContextOAuth2).(oauth2.TokenSource); ok {
+		if tok, ok := ctx.Value(finapi.ContextOAuth2).(oauth2.TokenSource); ok {
 			// We were able to grab an oauth2 token from the context
 			var latestToken *oauth2.Token
 			if latestToken, err = tok.Token(); err != nil {
@@ -355,12 +356,12 @@ func (c *APIClient) prepareRequest(
 		}
 
 		// Basic HTTP Authentication
-		if auth, ok := ctx.Value(ContextBasicAuth).(BasicAuth); ok {
+		if auth, ok := ctx.Value(finapi.ContextBasicAuth).(BasicAuth); ok {
 			localVarRequest.SetBasicAuth(auth.UserName, auth.Password)
 		}
 
 		// AccessToken Authentication
-		if auth, ok := ctx.Value(ContextAccessToken).(string); ok {
+		if auth, ok := ctx.Value(finapi.ContextAccessToken).(string); ok {
 			localVarRequest.Header.Add("Authorization", "Bearer "+auth)
 		}
 

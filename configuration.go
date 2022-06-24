@@ -15,45 +15,8 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-)
 
-// contextKeys are used to identify the type of value in the context.
-// Since these are string, it is possible to get a short description of the
-// context key for logging and debugging using key.String().
-
-type contextKey string
-
-func (c contextKey) String() string {
-	return "auth " + string(c)
-}
-
-var (
-	// ContextOAuth2 takes an oauth2.TokenSource as authentication for the request.
-	ContextOAuth2 = contextKey("token")
-
-	// ContextBasicAuth takes BasicAuth as authentication for the request.
-	ContextBasicAuth = contextKey("basic")
-
-	// ContextAccessToken takes a string oauth2 access token as authentication for the request.
-	ContextAccessToken = contextKey("accesstoken")
-
-	// ContextAPIKeys takes a string apikey as authentication for the request
-	ContextAPIKeys = contextKey("apiKeys")
-
-	// ContextHttpSignatureAuth takes HttpSignatureAuth as authentication for the request.
-	ContextHttpSignatureAuth = contextKey("httpsignature")
-
-	// ContextServerIndex uses a server configuration from the index.
-	ContextServerIndex = contextKey("serverIndex")
-
-	// ContextOperationServerIndices uses a server configuration from the index mapping.
-	ContextOperationServerIndices = contextKey("serverOperationIndices")
-
-	// ContextServerVariables overrides a server configuration variables.
-	ContextServerVariables = contextKey("serverVariables")
-
-	// ContextOperationServerVariables overrides a server configuration variables using operation specific values.
-	ContextOperationServerVariables = contextKey("serverOperationVariables")
+	"github.com/fastbill/go-finapi/v6"
 )
 
 // BasicAuth provides basic http authentication to a request passed via context using ContextBasicAuth
@@ -154,7 +117,7 @@ func (c *Configuration) ServerURL(index int, variables map[string]string) (strin
 }
 
 func getServerIndex(ctx context.Context) (int, error) {
-	si := ctx.Value(ContextServerIndex)
+	si := ctx.Value(finapi.ContextServerIndex)
 	if si != nil {
 		if index, ok := si.(int); ok {
 			return index, nil
@@ -165,7 +128,7 @@ func getServerIndex(ctx context.Context) (int, error) {
 }
 
 func getServerOperationIndex(ctx context.Context, endpoint string) (int, error) {
-	osi := ctx.Value(ContextOperationServerIndices)
+	osi := ctx.Value(finapi.ContextOperationServerIndices)
 	if osi != nil {
 		if operationIndices, ok := osi.(map[string]int); !ok {
 			return 0, reportError("Invalid type %T should be map[string]int", osi)
@@ -180,7 +143,7 @@ func getServerOperationIndex(ctx context.Context, endpoint string) (int, error) 
 }
 
 func getServerVariables(ctx context.Context) (map[string]string, error) {
-	sv := ctx.Value(ContextServerVariables)
+	sv := ctx.Value(finapi.ContextServerVariables)
 	if sv != nil {
 		if variables, ok := sv.(map[string]string); ok {
 			return variables, nil
@@ -191,7 +154,7 @@ func getServerVariables(ctx context.Context) (map[string]string, error) {
 }
 
 func getServerOperationVariables(ctx context.Context, endpoint string) (map[string]string, error) {
-	osv := ctx.Value(ContextOperationServerVariables)
+	osv := ctx.Value(finapi.ContextOperationServerVariables)
 	if osv != nil {
 		if operationVariables, ok := osv.(map[string]map[string]string); !ok {
 			return nil, reportError("ctx value of ContextOperationServerVariables has invalid type %T should be map[string]map[string]string", osv)

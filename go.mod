@@ -2,7 +2,10 @@ module github.com/fastbill/go-finapi-webform2
 
 go 1.18
 
-require golang.org/x/oauth2 v0.0.0-20210323180902-22b0adad7558
+require (
+	github.com/fastbill/go-finapi/v6 v6.0.0
+	golang.org/x/oauth2 v0.0.0-20210323180902-22b0adad7558
+)
 
 require (
 	github.com/golang/protobuf v1.4.2 // indirect

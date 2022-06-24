@@ -122,3 +122,6 @@ Each of these functions takes a value of the given basic type and returns a poin
 
 The update procedure is described in the main SDK, see https://github.com/fastbill/go-finapi#how-to-update-this-sdk.
 The package name should be set to `webform2`.
+
+Additionally:
+* In the file `configuration.go`, remove the section about `contextKey` (the definition and all the variables). Everywhere they were used, refer to the same variables in the main [Go finapi SDK](https://github.com/fastbill/go-finapi) instead, otherwise authorization will not work because of the different types of the context variables.
