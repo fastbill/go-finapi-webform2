@@ -20,7 +20,7 @@ type ValidationError struct {
 	// Fields that caused the error
 	Errors []InvalidFieldError `json:"errors"`
 	// Timestamp when the error occurred in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	Timestamp time.Time `json:"timestamp"`
+	Timestamp Time `json:"timestamp"`
 	// Endpoint caused the error
 	Endpoint string `json:"endpoint"`
 }
@@ -32,7 +32,7 @@ type ValidationError struct {
 func NewValidationError(errors []InvalidFieldError, timestamp time.Time, endpoint string) *ValidationError {
 	this := ValidationError{}
 	this.Errors = errors
-	this.Timestamp = timestamp
+	this.Timestamp = Time(timestamp)
 	this.Endpoint = endpoint
 	return &this
 }
@@ -76,7 +76,7 @@ func (o *ValidationError) GetTimestamp() time.Time {
 		return ret
 	}
 
-	return o.Timestamp
+	return time.Time(o.Timestamp)
 }
 
 // GetTimestampOk returns a tuple with the Timestamp field value
@@ -85,12 +85,13 @@ func (o *ValidationError) GetTimestampOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Timestamp, true
+	t := time.Time(o.Timestamp)
+	return &t, true
 }
 
 // SetTimestamp sets field value
 func (o *ValidationError) SetTimestamp(v time.Time) {
-	o.Timestamp = v
+	o.Timestamp = Time(v)
 }
 
 // GetEndpoint returns the Endpoint field value

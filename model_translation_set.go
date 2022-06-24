@@ -20,7 +20,7 @@ type TranslationSet struct {
 	// Globally unique translation set's identifier
 	Id string `json:"id"`
 	// The timestamp when the translation set was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt time.Time `json:"createdAt"`
+	CreatedAt Time `json:"createdAt"`
 	Cs NullableTranslation `json:"cs,omitempty"`
 	De NullableTranslation `json:"de,omitempty"`
 	En NullableTranslation `json:"en,omitempty"`
@@ -34,7 +34,7 @@ type TranslationSet struct {
 func NewTranslationSet(id string, createdAt time.Time) *TranslationSet {
 	this := TranslationSet{}
 	this.Id = id
-	this.CreatedAt = createdAt
+	this.CreatedAt = Time(createdAt)
 	return &this
 }
 
@@ -77,7 +77,7 @@ func (o *TranslationSet) GetCreatedAt() time.Time {
 		return ret
 	}
 
-	return o.CreatedAt
+	return time.Time(o.CreatedAt)
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
@@ -86,12 +86,13 @@ func (o *TranslationSet) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	t := time.Time(o.CreatedAt)
+	return &t, true
 }
 
 // SetCreatedAt sets field value
 func (o *TranslationSet) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+	o.CreatedAt = Time(v)
 }
 
 // GetCs returns the Cs field value if set, zero value otherwise (both if not set or set to explicit null).

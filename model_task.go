@@ -20,7 +20,7 @@ type Task struct {
 	// Globally unique task's identifier
 	Id string `json:"id"`
 	// The timestamp when the task was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt time.Time `json:"createdAt"`
+	CreatedAt Time `json:"createdAt"`
 	Type TaskType `json:"type"`
 	Status TaskStatus `json:"status"`
 	Payload TaskPayload `json:"payload"`
@@ -33,7 +33,7 @@ type Task struct {
 func NewTask(id string, createdAt time.Time, type_ TaskType, status TaskStatus, payload TaskPayload) *Task {
 	this := Task{}
 	this.Id = id
-	this.CreatedAt = createdAt
+	this.CreatedAt = Time(createdAt)
 	this.Type = type_
 	this.Status = status
 	this.Payload = payload
@@ -79,7 +79,7 @@ func (o *Task) GetCreatedAt() time.Time {
 		return ret
 	}
 
-	return o.CreatedAt
+	return time.Time(o.CreatedAt)
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
@@ -88,12 +88,13 @@ func (o *Task) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	t := time.Time(o.CreatedAt)
+	return &t, true
 }
 
 // SetCreatedAt sets field value
 func (o *Task) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+	o.CreatedAt = Time(v)
 }
 
 // GetType returns the Type field value
