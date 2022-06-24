@@ -1,7 +1,6 @@
 package webform2
 
 import (
-	"strconv"
 	"time"
 )
 
@@ -21,26 +20,5 @@ func (t *Time) UnmarshalJSON(data []byte) error {
 		return err
 	}
 	*t = Time(parsedTime)
-	return nil
-}
-
-// Source for the code below: https://www.yellowduck.be/posts/handling-unix-timestamps-in-json/
-
-// UnixTime defines a timestamp encoded as epoch seconds in JSON.
-type UnixTime time.Time
-
-// MarshalJSON is used to convert the timestamp to JSON.
-func (t UnixTime) MarshalJSON() ([]byte, error) {
-	return []byte(strconv.FormatInt(time.Time(t).Unix(), 10)), nil
-}
-
-// UnmarshalJSON is used to convert the timestamp from JSON.
-func (t *UnixTime) UnmarshalJSON(s []byte) (err error) {
-	r := string(s)
-	q, err := strconv.ParseInt(r, 10, 64)
-	if err != nil {
-		return err
-	}
-	*(*time.Time)(t) = time.Unix(q, 0)
 	return nil
 }

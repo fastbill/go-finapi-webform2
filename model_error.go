@@ -22,7 +22,7 @@ type Error struct {
 	// Error message
 	Description string `json:"description"`
 	// Timestamp when the error occurred in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	Timestamp UnixTime `json:"timestamp"`
+	Timestamp Time `json:"timestamp"`
 	// Endpoint caused the error
 	Endpoint string `json:"endpoint"`
 }
@@ -35,7 +35,7 @@ func NewError(code string, description string, timestamp time.Time, endpoint str
 	this := Error{}
 	this.Code = code
 	this.Description = description
-	this.Timestamp = UnixTime(timestamp)
+	this.Timestamp = Time(timestamp)
 	this.Endpoint = endpoint
 	return &this
 }
@@ -118,7 +118,7 @@ func (o *Error) GetTimestampOk() (*time.Time, bool) {
 
 // SetTimestamp sets field value
 func (o *Error) SetTimestamp(v time.Time) {
-	o.Timestamp = UnixTime(v)
+	o.Timestamp = Time(v)
 }
 
 // GetEndpoint returns the Endpoint field value
