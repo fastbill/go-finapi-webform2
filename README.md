@@ -125,3 +125,4 @@ The package name should be set to `webform2`.
 
 Additionally:
 * In the file `configuration.go`, remove the section about `contextKey` (the definition and all the variables). Everywhere they were used, refer to the same variables in the main [Go finapi SDK](https://github.com/fastbill/go-finapi) instead, otherwise authorization will not work because of the different types of the context variables.
+* Currently, finAPI sends incorrectly formatted timestamps (e.g. for createdAt dates). As long as this is the case, make sure to keep the file `model_time.go` and make sure to revert all changes that might have happened during the update to use the custom time definitions instead of the normal time.Time in the models.
