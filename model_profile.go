@@ -22,7 +22,7 @@ type Profile struct {
 	// Label to profile
 	Label string `json:"label"`
 	// The timestamp when the profile was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt time.Time `json:"createdAt"`
+	CreatedAt Time `json:"createdAt"`
 	// Whether the profile will be used by default for all web forms.<br/>We urge you to set one profile as default. This way, if you do not pass the profile in the API call, we will use the default profile from you for the web forms.
 	Default bool `json:"default"`
 	Brand NullableBrand `json:"brand,omitempty"`
@@ -38,7 +38,7 @@ func NewProfile(id string, label string, createdAt time.Time, default_ bool) *Pr
 	this := Profile{}
 	this.Id = id
 	this.Label = label
-	this.CreatedAt = createdAt
+	this.CreatedAt = Time(createdAt)
 	this.Default = default_
 	return &this
 }
@@ -106,7 +106,7 @@ func (o *Profile) GetCreatedAt() time.Time {
 		return ret
 	}
 
-	return o.CreatedAt
+	return time.Time(o.CreatedAt)
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
@@ -115,12 +115,13 @@ func (o *Profile) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	t := time.Time(o.CreatedAt)
+	return &t, true
 }
 
 // SetCreatedAt sets field value
 func (o *Profile) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+	o.CreatedAt = Time(v)
 }
 
 // GetDefault returns the Default field value

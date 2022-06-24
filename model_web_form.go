@@ -22,9 +22,9 @@ type WebForm struct {
 	// Full web form's URL (including the hostname).<br/>You can enhance the given URL with the following query parameters: <code>redirectUrl</code>, <code>errorRedirectUrl</code>, <code>customerSupportUrl</code>.<br/>Find more info in the <a href='https://documentation.finapi.io/webform/For-best-results!.2477654019.html#Forbestresults!-Enhanceend-userexperience!' target='_blank'>Web Form 2.0 Public Documentation</a>.
 	Url string `json:"url"`
 	// The timestamp when the web form was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt time.Time `json:"createdAt"`
+	CreatedAt Time `json:"createdAt"`
 	// The timestamp when the web form expires in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	ExpiresAt time.Time `json:"expiresAt"`
+	ExpiresAt Time `json:"expiresAt"`
 	Type WebFormType `json:"type"`
 	Status WebFormStatus `json:"status"`
 	Payload Payload `json:"payload"`
@@ -38,8 +38,8 @@ func NewWebForm(id string, url string, createdAt time.Time, expiresAt time.Time,
 	this := WebForm{}
 	this.Id = id
 	this.Url = url
-	this.CreatedAt = createdAt
-	this.ExpiresAt = expiresAt
+	this.CreatedAt = Time(createdAt)
+	this.ExpiresAt = Time(expiresAt)
 	this.Type = type_
 	this.Status = status
 	this.Payload = payload
@@ -109,7 +109,7 @@ func (o *WebForm) GetCreatedAt() time.Time {
 		return ret
 	}
 
-	return o.CreatedAt
+	return time.Time(o.CreatedAt)
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
@@ -118,12 +118,13 @@ func (o *WebForm) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.CreatedAt, true
+	t := time.Time(o.CreatedAt)
+	return &t, true
 }
 
 // SetCreatedAt sets field value
 func (o *WebForm) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
+	o.CreatedAt = Time(v)
 }
 
 // GetExpiresAt returns the ExpiresAt field value
@@ -133,7 +134,7 @@ func (o *WebForm) GetExpiresAt() time.Time {
 		return ret
 	}
 
-	return o.ExpiresAt
+	return time.Time(o.ExpiresAt)
 }
 
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value
@@ -142,12 +143,13 @@ func (o *WebForm) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ExpiresAt, true
+	t := time.Time(o.ExpiresAt)
+	return &t, true
 }
 
 // SetExpiresAt sets field value
 func (o *WebForm) SetExpiresAt(v time.Time) {
-	o.ExpiresAt = v
+	o.ExpiresAt = Time(v)
 }
 
 // GetType returns the Type field value
