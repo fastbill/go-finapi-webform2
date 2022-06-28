@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Globally unique translation set&#39;s identifier | 
-**CreatedAt** | **time.Time** | The timestamp when the translation set was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**CreatedAt** | **string** | The timestamp when the translation set was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
 **Cs** | Pointer to [**NullableTranslation**](Translation.md) |  | [optional] 
 **De** | Pointer to [**NullableTranslation**](Translation.md) |  | [optional] 
 **En** | Pointer to [**NullableTranslation**](Translation.md) |  | [optional] 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewTranslationSet
 
-`func NewTranslationSet(id string, createdAt time.Time, ) *TranslationSet`
+`func NewTranslationSet(id string, createdAt string, ) *TranslationSet`
 
 NewTranslationSet instantiates a new TranslationSet object
 This constructor will assign default values to properties that have it defined,
@@ -52,20 +52,20 @@ SetId sets Id field to given value.
 
 ### GetCreatedAt
 
-`func (o *TranslationSet) GetCreatedAt() time.Time`
+`func (o *TranslationSet) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *TranslationSet) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *TranslationSet) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *TranslationSet) SetCreatedAt(v time.Time)`
+`func (o *TranslationSet) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

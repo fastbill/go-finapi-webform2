@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Globally unique profile&#39;s identifier | 
 **Label** | **string** | Label to profile | 
-**CreatedAt** | **time.Time** | The timestamp when the profile was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**CreatedAt** | **string** | The timestamp when the profile was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
 **Default** | **bool** | Whether the profile will be used by default for all web forms.&lt;br/&gt;We urge you to set one profile as default. This way, if you do not pass the profile in the API call, we will use the default profile from you for the web forms. | 
 **Brand** | Pointer to [**NullableBrand**](Brand.md) |  | [optional] 
 **Functionality** | Pointer to [**NullableFunctionality**](Functionality.md) |  | [optional] 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewProfile
 
-`func NewProfile(id string, label string, createdAt time.Time, default_ bool, ) *Profile`
+`func NewProfile(id string, label string, createdAt string, default_ bool, ) *Profile`
 
 NewProfile instantiates a new Profile object
 This constructor will assign default values to properties that have it defined,
@@ -73,20 +73,20 @@ SetLabel sets Label field to given value.
 
 ### GetCreatedAt
 
-`func (o *Profile) GetCreatedAt() time.Time`
+`func (o *Profile) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Profile) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Profile) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Profile) SetCreatedAt(v time.Time)`
+`func (o *Profile) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 

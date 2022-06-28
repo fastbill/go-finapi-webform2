@@ -12,7 +12,6 @@ package webform2
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // TranslationSet struct for TranslationSet
@@ -20,7 +19,7 @@ type TranslationSet struct {
 	// Globally unique translation set's identifier
 	Id string `json:"id"`
 	// The timestamp when the translation set was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt Time `json:"createdAt"`
+	CreatedAt string `json:"createdAt"`
 	Cs NullableTranslation `json:"cs,omitempty"`
 	De NullableTranslation `json:"de,omitempty"`
 	En NullableTranslation `json:"en,omitempty"`
@@ -31,10 +30,10 @@ type TranslationSet struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTranslationSet(id string, createdAt time.Time) *TranslationSet {
+func NewTranslationSet(id string, createdAt string) *TranslationSet {
 	this := TranslationSet{}
 	this.Id = id
-	this.CreatedAt = Time(createdAt)
+	this.CreatedAt = createdAt
 	return &this
 }
 
@@ -71,28 +70,27 @@ func (o *TranslationSet) SetId(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *TranslationSet) GetCreatedAt() time.Time {
+func (o *TranslationSet) GetCreatedAt() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
-	return time.Time(o.CreatedAt)
+	return o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *TranslationSet) GetCreatedAtOk() (*time.Time, bool) {
+func (o *TranslationSet) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	t := time.Time(o.CreatedAt)
-	return &t, true
+	return &o.CreatedAt, true
 }
 
 // SetCreatedAt sets field value
-func (o *TranslationSet) SetCreatedAt(v time.Time) {
-	o.CreatedAt = Time(v)
+func (o *TranslationSet) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
 // GetCs returns the Cs field value if set, zero value otherwise (both if not set or set to explicit null).

@@ -6,14 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Code** | **string** | Error code | 
 **Description** | **string** | Error message | 
-**Timestamp** | **time.Time** | Timestamp when the error occurred in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**Timestamp** | **string** | Timestamp when the error occurred in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
 **Endpoint** | **string** | Endpoint caused the error | 
 
 ## Methods
 
 ### NewError
 
-`func NewError(code string, description string, timestamp time.Time, endpoint string, ) *Error`
+`func NewError(code string, description string, timestamp string, endpoint string, ) *Error`
 
 NewError instantiates a new Error object
 This constructor will assign default values to properties that have it defined,
@@ -70,20 +70,20 @@ SetDescription sets Description field to given value.
 
 ### GetTimestamp
 
-`func (o *Error) GetTimestamp() time.Time`
+`func (o *Error) GetTimestamp() string`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *Error) GetTimestampOk() (*time.Time, bool)`
+`func (o *Error) GetTimestampOk() (*string, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *Error) SetTimestamp(v time.Time)`
+`func (o *Error) SetTimestamp(v string)`
 
 SetTimestamp sets Timestamp field to given value.
 

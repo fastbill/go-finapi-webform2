@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Globally unique web form&#39;s identifier | 
 **Url** | **string** | Full web form&#39;s URL (including the hostname).&lt;br/&gt;You can enhance the given URL with the following query parameters: &lt;code&gt;redirectUrl&lt;/code&gt;, &lt;code&gt;errorRedirectUrl&lt;/code&gt;, &lt;code&gt;customerSupportUrl&lt;/code&gt;.&lt;br/&gt;Find more info in the &lt;a href&#x3D;&#39;https://documentation.finapi.io/webform/For-best-results!.2477654019.html#Forbestresults!-Enhanceend-userexperience!&#39; target&#x3D;&#39;_blank&#39;&gt;Web Form 2.0 Public Documentation&lt;/a&gt;. | 
-**CreatedAt** | **time.Time** | The timestamp when the web form was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
-**ExpiresAt** | **time.Time** | The timestamp when the web form expires in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**CreatedAt** | **string** | The timestamp when the web form was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**ExpiresAt** | **string** | The timestamp when the web form expires in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
 **Type** | [**WebFormType**](WebFormType.md) |  | 
 **Status** | [**WebFormStatus**](WebFormStatus.md) |  | 
 **Payload** | [**Payload**](Payload.md) |  | 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewWebForm
 
-`func NewWebForm(id string, url string, createdAt time.Time, expiresAt time.Time, type_ WebFormType, status WebFormStatus, payload Payload, ) *WebForm`
+`func NewWebForm(id string, url string, createdAt string, expiresAt string, type_ WebFormType, status WebFormStatus, payload Payload, ) *WebForm`
 
 NewWebForm instantiates a new WebForm object
 This constructor will assign default values to properties that have it defined,
@@ -73,40 +73,40 @@ SetUrl sets Url field to given value.
 
 ### GetCreatedAt
 
-`func (o *WebForm) GetCreatedAt() time.Time`
+`func (o *WebForm) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *WebForm) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *WebForm) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *WebForm) SetCreatedAt(v time.Time)`
+`func (o *WebForm) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetExpiresAt
 
-`func (o *WebForm) GetExpiresAt() time.Time`
+`func (o *WebForm) GetExpiresAt() string`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *WebForm) GetExpiresAtOk() (*time.Time, bool)`
+`func (o *WebForm) GetExpiresAtOk() (*string, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *WebForm) SetExpiresAt(v time.Time)`
+`func (o *WebForm) SetExpiresAt(v string)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 

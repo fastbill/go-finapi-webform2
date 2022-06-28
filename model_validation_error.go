@@ -12,7 +12,6 @@ package webform2
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // ValidationError Set of validation errors
@@ -20,7 +19,7 @@ type ValidationError struct {
 	// Fields that caused the error
 	Errors []InvalidFieldError `json:"errors"`
 	// Timestamp when the error occurred in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	Timestamp Time `json:"timestamp"`
+	Timestamp string `json:"timestamp"`
 	// Endpoint caused the error
 	Endpoint string `json:"endpoint"`
 }
@@ -29,10 +28,10 @@ type ValidationError struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewValidationError(errors []InvalidFieldError, timestamp time.Time, endpoint string) *ValidationError {
+func NewValidationError(errors []InvalidFieldError, timestamp string, endpoint string) *ValidationError {
 	this := ValidationError{}
 	this.Errors = errors
-	this.Timestamp = Time(timestamp)
+	this.Timestamp = timestamp
 	this.Endpoint = endpoint
 	return &this
 }
@@ -70,28 +69,27 @@ func (o *ValidationError) SetErrors(v []InvalidFieldError) {
 }
 
 // GetTimestamp returns the Timestamp field value
-func (o *ValidationError) GetTimestamp() time.Time {
+func (o *ValidationError) GetTimestamp() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
-	return time.Time(o.Timestamp)
+	return o.Timestamp
 }
 
 // GetTimestampOk returns a tuple with the Timestamp field value
 // and a boolean to check if the value has been set.
-func (o *ValidationError) GetTimestampOk() (*time.Time, bool) {
+func (o *ValidationError) GetTimestampOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	t := time.Time(o.Timestamp)
-	return &t, true
+	return &o.Timestamp, true
 }
 
 // SetTimestamp sets field value
-func (o *ValidationError) SetTimestamp(v time.Time) {
-	o.Timestamp = Time(v)
+func (o *ValidationError) SetTimestamp(v string) {
+	o.Timestamp = v
 }
 
 // GetEndpoint returns the Endpoint field value

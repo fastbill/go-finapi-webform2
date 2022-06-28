@@ -120,9 +120,13 @@ Each of these functions takes a value of the given basic type and returns a poin
 
 ## How to Update This SDK
 
-The update procedure is described in the main SDK, see https://github.com/fastbill/go-finapi#how-to-update-this-sdk.
-The package name should be set to `webform2`.
+Currently, this SDK only works properly if it was self-generated. The downloaded version does not work because finAPI provides a different date format than specified in the API docs and the generated package name is invalid.
 
-Additionally:
+The procedure how to generate the SDK is described here: https://github.com/fastbill/go-finapi#how-to-update-this-sdk.  
+Make the following adjustments to the process:
+* Select "finAPI Web Form 2.0" in the product selection before downloading the openapi file.
+* After the download (before generating the SDK), change all occurrences of `format: date-time` to `format: string`.
+* Set the package name in the config.json file to `webform2`.
+
+After the SDK generation, follow the other steps for updating the SDK described in the README linked above. Additionally:
 * In the file `configuration.go`, remove the section about `contextKey` (the definition and all the variables). Everywhere they were used, refer to the same variables in the main [Go finapi SDK](https://github.com/fastbill/go-finapi) instead, otherwise authorization will not work because of the different types of the context variables.
-* Currently, finAPI sends incorrectly formatted timestamps (e.g. for createdAt dates). As long as this is the case, make sure to keep the file `model_time.go` and make sure to revert all changes that might have happened during the update to use the custom time definitions instead of the normal time.Time in the models.

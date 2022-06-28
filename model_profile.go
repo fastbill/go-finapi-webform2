@@ -12,7 +12,6 @@ package webform2
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // Profile struct for Profile
@@ -22,7 +21,7 @@ type Profile struct {
 	// Label to profile
 	Label string `json:"label"`
 	// The timestamp when the profile was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt Time `json:"createdAt"`
+	CreatedAt string `json:"createdAt"`
 	// Whether the profile will be used by default for all web forms.<br/>We urge you to set one profile as default. This way, if you do not pass the profile in the API call, we will use the default profile from you for the web forms.
 	Default bool `json:"default"`
 	Brand NullableBrand `json:"brand,omitempty"`
@@ -34,11 +33,11 @@ type Profile struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProfile(id string, label string, createdAt time.Time, default_ bool) *Profile {
+func NewProfile(id string, label string, createdAt string, default_ bool) *Profile {
 	this := Profile{}
 	this.Id = id
 	this.Label = label
-	this.CreatedAt = Time(createdAt)
+	this.CreatedAt = createdAt
 	this.Default = default_
 	return &this
 }
@@ -100,28 +99,27 @@ func (o *Profile) SetLabel(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *Profile) GetCreatedAt() time.Time {
+func (o *Profile) GetCreatedAt() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
-	return time.Time(o.CreatedAt)
+	return o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *Profile) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Profile) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	t := time.Time(o.CreatedAt)
-	return &t, true
+	return &o.CreatedAt, true
 }
 
 // SetCreatedAt sets field value
-func (o *Profile) SetCreatedAt(v time.Time) {
-	o.CreatedAt = Time(v)
+func (o *Profile) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
 // GetDefault returns the Default field value

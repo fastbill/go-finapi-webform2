@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Errors** | [**[]InvalidFieldError**](InvalidFieldError.md) | Fields that caused the error | 
-**Timestamp** | **time.Time** | Timestamp when the error occurred in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**Timestamp** | **string** | Timestamp when the error occurred in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
 **Endpoint** | **string** | Endpoint caused the error | 
 
 ## Methods
 
 ### NewValidationError
 
-`func NewValidationError(errors []InvalidFieldError, timestamp time.Time, endpoint string, ) *ValidationError`
+`func NewValidationError(errors []InvalidFieldError, timestamp string, endpoint string, ) *ValidationError`
 
 NewValidationError instantiates a new ValidationError object
 This constructor will assign default values to properties that have it defined,
@@ -49,20 +49,20 @@ SetErrors sets Errors field to given value.
 
 ### GetTimestamp
 
-`func (o *ValidationError) GetTimestamp() time.Time`
+`func (o *ValidationError) GetTimestamp() string`
 
 GetTimestamp returns the Timestamp field if non-nil, zero value otherwise.
 
 ### GetTimestampOk
 
-`func (o *ValidationError) GetTimestampOk() (*time.Time, bool)`
+`func (o *ValidationError) GetTimestampOk() (*string, bool)`
 
 GetTimestampOk returns a tuple with the Timestamp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimestamp
 
-`func (o *ValidationError) SetTimestamp(v time.Time)`
+`func (o *ValidationError) SetTimestamp(v string)`
 
 SetTimestamp sets Timestamp field to given value.
 

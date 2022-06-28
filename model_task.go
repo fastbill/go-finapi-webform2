@@ -12,7 +12,6 @@ package webform2
 
 import (
 	"encoding/json"
-	"time"
 )
 
 // Task struct for Task
@@ -20,7 +19,7 @@ type Task struct {
 	// Globally unique task's identifier
 	Id string `json:"id"`
 	// The timestamp when the task was created in the format <code>yyyy-MM-dd'T'HH:mm:ss.SSSZ</code>.
-	CreatedAt Time `json:"createdAt"`
+	CreatedAt string `json:"createdAt"`
 	Type TaskType `json:"type"`
 	Status TaskStatus `json:"status"`
 	Payload TaskPayload `json:"payload"`
@@ -30,10 +29,10 @@ type Task struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTask(id string, createdAt time.Time, type_ TaskType, status TaskStatus, payload TaskPayload) *Task {
+func NewTask(id string, createdAt string, type_ TaskType, status TaskStatus, payload TaskPayload) *Task {
 	this := Task{}
 	this.Id = id
-	this.CreatedAt = Time(createdAt)
+	this.CreatedAt = createdAt
 	this.Type = type_
 	this.Status = status
 	this.Payload = payload
@@ -73,28 +72,27 @@ func (o *Task) SetId(v string) {
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *Task) GetCreatedAt() time.Time {
+func (o *Task) GetCreatedAt() string {
 	if o == nil {
-		var ret time.Time
+		var ret string
 		return ret
 	}
 
-	return time.Time(o.CreatedAt)
+	return o.CreatedAt
 }
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *Task) GetCreatedAtOk() (*time.Time, bool) {
+func (o *Task) GetCreatedAtOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	t := time.Time(o.CreatedAt)
-	return &t, true
+	return &o.CreatedAt, true
 }
 
 // SetCreatedAt sets field value
-func (o *Task) SetCreatedAt(v time.Time) {
-	o.CreatedAt = Time(v)
+func (o *Task) SetCreatedAt(v string) {
+	o.CreatedAt = v
 }
 
 // GetType returns the Type field value

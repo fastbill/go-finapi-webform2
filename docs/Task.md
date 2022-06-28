@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | Globally unique task&#39;s identifier | 
-**CreatedAt** | **time.Time** | The timestamp when the task was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
+**CreatedAt** | **string** | The timestamp when the task was created in the format &lt;code&gt;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&lt;/code&gt;. | 
 **Type** | [**TaskType**](TaskType.md) |  | 
 **Status** | [**TaskStatus**](TaskStatus.md) |  | 
 **Payload** | [**TaskPayload**](TaskPayload.md) |  | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 
 ### NewTask
 
-`func NewTask(id string, createdAt time.Time, type_ TaskType, status TaskStatus, payload TaskPayload, ) *Task`
+`func NewTask(id string, createdAt string, type_ TaskType, status TaskStatus, payload TaskPayload, ) *Task`
 
 NewTask instantiates a new Task object
 This constructor will assign default values to properties that have it defined,
@@ -51,20 +51,20 @@ SetId sets Id field to given value.
 
 ### GetCreatedAt
 
-`func (o *Task) GetCreatedAt() time.Time`
+`func (o *Task) GetCreatedAt() string`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *Task) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *Task) GetCreatedAtOk() (*string, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *Task) SetCreatedAt(v time.Time)`
+`func (o *Task) SetCreatedAt(v string)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
